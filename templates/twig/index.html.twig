@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} Twig {% endblock %}
+
+{% block stylesheets %}
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <h2>Twig</h2>
+
+    <p>
+        <a href="https://twig.symfony.com/" target="_blank">Documentation</a>
+    </p>
+
+    <h3>Faire afficher une variable</h3>
+
+    <p>Hello {{ name }}</p>
+
+    <h3>Fonction Twig (url)</h3>
+
+    <p>Path = {{ path('twig_index') }}</p>
+    <p>URL = {{ url('twig_index') }}</p>
+
+    <h3>Images</h3>
+
+    <div style="width: 25%">
+        <img src="{{ asset('images/404_error.jpg') }}" alt="404 error" title="404 error" />
+    </div>
+
+    <h3>Les Filtres</h3>
+    <h4>Date</h4>
+
+    <p>Nous sommes le {{ date | date('d/m/Y') }}</p>
+
+    <h4>Url_encode</h4>
+
+    <p>{{ 'Anaïs est gentille' | url_encode }}</p>
+
+    <h3>Afficher un objet</h3>
+
+    {# Commentaire twig #}
+    {# ~ permet de faire de la concaténation #}
+    <p>Bonjour {{ person.firstname ~ ' ' ~ person.lastname }}</p>
+
+    <p>{{ person.sayHello }}</p>
+
+    <h3>Afficher un tableau associatif</h3>
+
+    <p>Bienvenue à notre formation {{ formation.nom }} qui a lieu à {{ formation.lieu }}</p>
+
+{% endblock %}

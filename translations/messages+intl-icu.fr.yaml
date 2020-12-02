@@ -1,0 +1,31 @@
+welcome: "Bienvenue"
+information: "Vous venez d'entrer dans une zone de traduction"
+
+# Template
+hello: "Bonjour {name}"
+
+# Pluralisation
+mailbox:
+    message: >-
+        {messages, plural,
+            =0    {Vous n'avez aucun message}
+            =1    {Vous avez 1 message}
+            other {Vous avez plusieurs messages}
+        }
+
+#Template + Pluralisation
+visitor.count: >-
+    {count, plural,
+        =1     {Vous êtes seul}
+        other  {Il y a # personnes}
+    }
+
+# select
+invitation: >-
+    {genre, select,
+        feminin  { Mme {lastname} a été invitée à notre soirée }
+        masculin { M {lastname} a été invité à notre soirée }
+        other    { }
+    }
+
+"Bad credentials.": "Erreur d'authentification"

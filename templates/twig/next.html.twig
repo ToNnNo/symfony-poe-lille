@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} Twig Next {% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+    <h2>Twig Next: Les Structures</h2>
+
+    <h3>La boucle for</h3>
+
+    <p>Liste des participants</p>
+    <ul>
+        {% for key, name in participants %}
+            <li>{{ name|upper }} (index: {{ key }})</li>
+        {% endfor %}
+    </ul>
+
+    <p>Afficher les 5 premiers participants</p>
+    <ul>
+        {# slice = [0; 5[ #}
+        {% for name in participants|slice(0, 5) %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Parcourir un tableau vide</p>
+    <ul>
+        {% for value in array %}
+            <li>{{  value }}</li>
+        {% else %}
+            <li>Aucunes informations présente dans le tableau</li>
+        {% endfor %}
+    </ul>
+
+    <p>Liste des produits encore disponibles</p>
+    <ul>
+        {% for produit in produits|filter( p => p.quantite > 0 ) %}
+            <li>{{ produit.name }} - <small>qte: {{ produit.quantite }}</small></li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+    {% for i in 1..10 %}
+        <li>{{ i }} x 7 = {{ i*7 }}</li>
+    {% endfor %}
+    </ul>
+
+    <h3>Conditions if</h3>
+
+    {% set number = random(-10, 10) %}
+
+    <p>Number = {{ number }}</p>
+
+    {% if number > 0 %}
+        <p>La variable number est positive</p>
+    {% endif %}
+
+    {% if number is odd %}
+        <p>La valeur de la variable number est impaire</p>
+    {% else %}
+        <p>La valeur de la variable number est paire</p>
+    {% endif %}
+
+    {% if number is not even %}
+        <p>La valeur de la variable number est impaire</p>
+    {% else %}
+        <p>La valeur de la variable number est paire</p>
+    {% endif %}
+
+    {% if number in [3, 4, 5, 6] %}
+        <p>{{ number }} est contenu dans le tableau [3, 4, 5, 6]</p>
+    {% endif %}
+
+    {% if number in 0..10 %}
+        <p>{{ number }} est compris entre [0..10]</p>
+    {% endif %}
+
+
+{% endblock %}

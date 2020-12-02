@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+    <h2>Les Voters</h2>
+
+    <p>
+        Cette page n'est accessible qu'aux utilisateurs avec le rôle 'SUPERADMIN' et
+        aussi à l'utilisateur avec le rôle 'ADMIN' qui a pour username 'admin'.
+    </p>
+
+{% endblock %}

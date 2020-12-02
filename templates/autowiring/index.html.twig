@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AutowiringController!{% endblock %}
+
+{% block body %}
+
+    <p>
+        <b>Autowiring: </b> Demander un Service (Classe qui réalise une action spécifique (Classe Métier)) à Symfony en
+        indiquant le nom du Service dans les paramètres d'une method ou d'un constructeur.
+    </p>
+    <p>Exemple: </p>
+    <pre>public function index(<b>LoggerInterface $logger</b>): Response { [...] }</pre>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServiceController!{% endblock %}
+
+{% block body %}
+
+    <h2>Les Services</h2>
+
+    <h3>Service Uploader</h3>
+
+    {{ form_errors(formView) }}
+
+    {{ form_start(formView) }}
+        <div class="form-group">
+            {{ form_label(formView.image) }}
+            {{ form_widget(formView.image) }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-primary">
+                Transférer
+            </button>
+        </div>
+    {{ form_end(formView) }}
+
+    {% if path %}
+        <img src="{{ asset(path) }}" alt="" class="img-fluid" />
+    {% endif %}
+
+
+{% endblock %}

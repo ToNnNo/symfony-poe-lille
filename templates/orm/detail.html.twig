@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ORM Doctrine{% endblock %}
+
+{% block body %}
+
+    <h2>ORM Doctrine</h2>
+
+    <h3>Détail</h3>
+
+    <dl class="row">
+        <dt class="col-2">ID:</dt>
+        <dd class="col-10">{{ livre.id }}</dd>
+
+        <dt class="col-2">Titre:</dt>
+        <dd class="col-10">{{ livre.titre }}</dd>
+
+        <dt class="col-2">Resume:</dt>
+        <dd class="col-10">{{ livre.resume | raw }}</dd>
+
+        <dt class="col-2">Parution:</dt>
+        <dd class="col-10">{{ livre.parution | date('d/m/Y') }}</dd>
+
+        <dt class="col-2">Genre:</dt>
+        <dd class="col-10">{{ livre.genre.nom ?? 'Aucun genre renseigné' }}</dd>
+    </dl>
+
+{% endblock %}

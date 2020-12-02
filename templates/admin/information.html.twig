@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+    <h2>Administration <small>Information</small></h2>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam corporis doloribus exercitationem itaque magni
+        minima nisi quibusdam voluptas. Cum delectus dolores eum facilis, harum impedit nesciunt repellat totam ullam
+        velit?</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, explicabo, molestias. Aliquam autem consequuntur
+        culpa debitis dolorem doloribus fugiat ipsa molestias neque nihil optio pariatur quasi quia, quidem rerum
+        vero?</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci alias aspernatur assumenda cumque
+        dicta dolorum expedita harum id impedit incidunt inventore ipsa numquam praesentium quae, rerum sit, vel
+        voluptatibus.</p>
+
+    {% if is_granted('ROLE_SUPERADMIN') %}
+
+        <h2>Information supplémentaire</h2>
+
+        <p>Ne doit être consulté que par le SUPER ADMINISTRATEUR !</p>
+
+    {% endif %}
+
+{% endblock %}

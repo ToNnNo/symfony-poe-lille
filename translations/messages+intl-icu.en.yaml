@@ -1,0 +1,32 @@
+welcome: "Welcome"
+information: "You've just entered a string translation area"
+fallback: "fallback ID is only defined in 'messages.en.yaml' file"
+
+# Template
+hello: "Good morning {name}"
+
+# Pluralisation
+mailbox:
+    message: >-
+        {messages, plural,
+            =0    {No message}
+            =1    {1 message}
+            other {You've many messages}
+        }
+
+#Template + Pluralisation
+visitor.count: >-
+    {count, plural,
+        =1     {You're alone}
+        other  {There are # people}
+    }
+
+# select
+invitation: >-
+    {genre, select,
+        feminin  { Mrs {lastname} has been invited to our party }
+        masculin { Mr {lastname} has been invited to our party }
+        other    { }
+    }
+
+"Bad credentials.": "Bad credentials."

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Présentation{% endblock %}
+
+{% block body %}
+
+    <h2>Présentation: Les Paramètres d'url</h2>
+    <p>Ce sont des valeurs dynamiques définie dans l'url de la page</p>
+
+    <p>Bonjour {{ name }}</p>
+
+    <p>
+        Dire bonjour à
+        <a href="{{ path('presentation_parameters', { 'name': 'pierre' }) }}">
+             Pierre</a> -
+
+        <a href="{{ path('presentation_parameters', { 'name': 'anaïs' }) }}">
+            Anaïs
+        </a>
+    </p>
+
+{% endblock %}

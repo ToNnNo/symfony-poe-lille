@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello World{% endblock %}
+
+{% block body %}
+    <h2>Bienvenue sur notre application Symfony !</h2>
+
+    <p>
+        Apprendre à utiliser symfony et son éco-système pour créer des applications web
+    </p>
+
+    <p>
+        Quel est le nom du meilleur formateur de Lille ?
+        <b>{{ name }}</b>
+    </p>
+
+    <p>
+        <a href="{{ path('presentation_index') }}">Voir la page présentation</a>
+    </p>
+
+    <p>
+        <a href="https://www.dawan.fr/formations/php/framework-php/framework-php-symfony-initiation-approfondissement" target="_blank">
+            Programme de la formation symfony
+        </a>
+    </p>
+{% endblock %}
+
+{% block header %}
+    <h1>Formation Symfony <small>POEC Lille</small></h1>
+{% endblock %}

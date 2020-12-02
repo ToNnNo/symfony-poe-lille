@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} Twig Mixed {% endblock %}
+
+{% block body %}
+
+    <h2>Twig Mixed</h2>
+
+    <h3>Auto Escape (XSS)</h3>
+
+    <p>{{ html }}</p>
+
+    <h3>Safe Escape String</h3>
+
+    <p>{{ html | raw }}</p>
+
+
+    <h3>Include</h3>
+
+    {{ include('twig/include.html') }}
+
+    <p>inital value = {{ name }}</p>
+
+    {% set name = "John Doe" %}
+
+    {{ include('twig/useless.html.twig', {name: 'Eduard Doe'}) }}
+    {{ include('twig/useless.html.twig', {name: 'Jane Doe'}) }}
+
+    {{ name }}
+
+{% endblock %}

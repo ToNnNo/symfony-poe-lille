@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Formulaires{% endblock %}
+
+{% block body %}
+
+    {# {{ form(form) }} #}
+
+    <h2>Formulaire</h2>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.titre) }}
+        {{ form_widget(form.titre) }}
+
+        {{ form_help(form.titre) }}
+
+        {% if form.titre.vars.errors | length > 0 %}
+            <div class="alert alert-danger">
+                {{ form_errors(form.titre) }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.resume) }}
+        {{ form_widget(form.resume) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.parution) }}
+        {{ form_widget(form.parution) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.genre) }}
+        {{ form_widget(form.genre) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.auteurs) }}
+        {{ form_widget(form.auteurs) }}
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="ajouter" class="btn btn-outline-primary" value="Ajouter" />
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

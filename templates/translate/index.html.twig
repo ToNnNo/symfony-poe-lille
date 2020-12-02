@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TranslateController!{% endblock %}
+
+{% block body %}
+
+    <h2>Traduction (i18n)</h2>
+    <p>i18n = internationalization</p>
+
+    <p>
+        <a href="{{ path('translate_index', {'_locale': 'fr'}) }}">Français</a> -
+        <a href="{{ path('translate_index', {'_locale': 'en'}) }}">English</a> -
+
+        <a href="{{ path('translate_translate_url', {'_locale': 'fr'}) }}">Français (url)</a> -
+        <a href="{{ path('translate_translate_url', {'_locale': 'en'}) }}">English (url)</a>
+    </p>
+
+    <h3>{{ welcome }}</h3>
+
+    <p>{{ 'information' | trans }}</p>
+
+    <h3>Fallback</h3>
+
+    <p class="small">Fallback : {{ 'fallback' | trans }}</p>
+
+    <h3>Traduction avec template</h3>
+
+    <p>{{ 'hello' | trans({'name': 'Stéphane'}) }}</p>
+
+    <h3>Pluralisation</h3>
+
+    <p>{{ 'mailbox.message' | trans({messages: 0}) }}</p>
+    <p>{{ 'mailbox.message' | trans({messages: 1}) }}</p>
+    <p>{{ 'mailbox.message' | trans({messages: 10}) }}</p>
+
+    <h3>Pluralisation + template</h3>
+
+    <p>{{ 'visitor.count' | trans({ 'count' : 1 }) }}</p>
+    <p>{{ 'visitor.count' | trans({ 'count' : 10 }) }}</p>
+
+    <h3>Selection (Switch)</h3>
+
+    <p>{{ 'invitation' | trans({ 'genre': 'feminin', 'lastname': 'Durand'}) }}</p>
+    <p>{{ 'invitation' | trans({ 'genre': 'masculin', 'lastname': 'Durand'}) }}</p>
+
+{% endblock %}

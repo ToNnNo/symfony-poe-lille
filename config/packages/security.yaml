@@ -1,8 +1,34 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        Symfony\Component\Security\Core\User\User: auto
+        #    algorithm: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPERADMIN: ROLE_ADMIN
+
     providers:
-        users_in_memory: { memory: null }
+        users_in_memory:
+            memory:
+                users:
+                    admin: { password: "$argon2id$v=19$m=65536,t=4,p=1$56PsEUR4JTZJwoKWCVtsJQ$tEUxW4c7omTdL8mM/rCcz7OJHlHA2ExDNmQ3CFOnxyw", roles: ['ROLE_ADMIN'] }
+                    adminbis: { password: "$argon2id$v=19$m=65536,t=4,p=1$56PsEUR4JTZJwoKWCVtsJQ$tEUxW4c7omTdL8mM/rCcz7OJHlHA2ExDNmQ3CFOnxyw", roles: ['ROLE_ADMIN'] }
+                    user: { password: "$argon2id$v=19$m=65536,t=4,p=1$gAbyW2r8msT8J/cqNXvYJw$CTD4kkyYJB7z0252qlHqELNGCH/pPBQn8i6uzwvtGus", roles: ['ROLE_USER'] }
+                    superadmin: { password: "$argon2id$v=19$m=65536,t=4,p=1$E09fJOk2aZqHgnhFdEHKjg$XnV4uYg/ZHl+b09+GPoD5kb6kzfeKCiRmcnYIfwB/tQ", roles: ['ROLE_SUPERADMIN'] }
+
+
     firewalls:
+        admin_area:
+            pattern: ^/
+            anonymous: true
+            form_login:
+                login_path: authentication_login
+                check_path: authentication_login
+                default_target_path: admin_index
+            logout:
+                path: authentication_logout
+                target: authentication_login
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -20,5 +46,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }
